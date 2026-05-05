@@ -37,4 +37,4 @@ jobs:
             cd "redbus project"
             git pull origin main
             npm install
-            pm2 restart all || pm2 start redbus.js --name "redbus-api"
+            pm2 restart redbus-api || pm2 start redbus.js --name "redbus-api"
