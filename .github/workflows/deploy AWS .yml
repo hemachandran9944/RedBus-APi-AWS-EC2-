@@ -34,7 +34,8 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           envs: MONGO_URI
           script: |
-            cd "redbus project"
+            cd "/home/ubuntu/RedBus-APi-AWS-EC2-" || exit
             git pull origin main
+            cd "redbus project"
             npm install
             pm2 restart redbus-api || pm2 start redbus.js --name "redbus-api"
