@@ -7,11 +7,11 @@ const cluster_databseing = process.env.MONGO_URI || 'mongodb://hemachandranhema8
 mongoose.connect(cluster_databseing)
 
     .then(()=>{
-        console.log("Sueccessfulley Connecting Cluster Data Base!");
+        console.log('Sueccessfulley Connecting Cluster Data Base!');
     })
 
 
     .catch((error)=>{
-        console.log("falied Connecting Cluster Data Base!",error.message  );
+        console.log('falied Connecting Cluster Data Base!',error.message  );
     });
 
