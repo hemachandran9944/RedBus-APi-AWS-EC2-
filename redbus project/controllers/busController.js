@@ -1,7 +1,7 @@
 
-    const jwt = require('jsonwebtoken');
+
     const Bus  = require('../models/Bus');
-    const { json } = require('express');
+    
 
         // Bus Creact API
 
@@ -23,7 +23,7 @@
                 });
                 
             }
-            res,status(500),json({error: error.messa.ge});
+            res.status(500).json({error: error.messa.ge});
             
         }
         
@@ -35,7 +35,7 @@
 exports.GetAllBus   =  async function (req, res) {
     try {
         const buses  = await Bus.find();
-        resstatus(200).json({
+        res.status(200).json({
             status: 'Success',
             results: buses.length,
             data: buses
@@ -95,6 +95,11 @@ exports.busUpdate = async (req, res) => {
 
         if (busNumber) {
             busUpdate.busNumber = busNumber;
+        }
+
+        if (amenities) {
+            busUpdate.amenities = amenities;
+            
         }
 
         const UpdatenewBus = await busUpdate.save();

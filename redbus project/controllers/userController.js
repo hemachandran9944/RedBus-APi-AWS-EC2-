@@ -2,7 +2,6 @@
 
 const User  = require('../models/User');
 const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
 const {SendRegisterOTP, SendForgetPasswordOTP} = require ('../settings/OtpSender');
 const { authoToken, authorizationTokenVerify } = require('../settings/autho');    
 
@@ -435,7 +434,7 @@ exports.VeriyOtp = async (req, res) => {
             res.status(404).json({
                 status: 'Failed',
                 message: 'Invalid OTP. Please check your email.',
-                error: error.message  
+                  
             });
             
         }

@@ -1,7 +1,6 @@
 const express = require('express');
 const Router  = express.Router();
 const routeController = require('../controllers/routeController');
-const jwt = require('jsonwebtoken');
 const { authorizationTokenVerify } = require('../settings/autho');
 
 

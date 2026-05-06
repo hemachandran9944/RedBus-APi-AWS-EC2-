@@ -1,21 +1,19 @@
 
-require('dotenv').config(); 
-const bcrypt = require('bcryptjs');
-const express = require('express');
-const Cluster_DataBase = require('./config/database'); 
+    require('dotenv').config(); 
+    const express = require('express');
+     
 
 
 
-// Controlleres
+    // Controlleres
 
-const userRoutes    = require('./routes/userRoutes');
-const busRoutes     = require('./routes/busRoutes');
-const bookingRoutes = require('./routes/bookingRoutes');
-const PaymetRouter  = require('./routes/paymentRoutes');
-const routeRoutes   = require('./routes/routeRoutes');
+    const userRoutes    = require('./routes/userRoutes');
+    const busRoutes     = require('./routes/busRoutes');
+    const bookingRoutes = require('./routes/bookingRoutes');
+    const PaymetRouter  = require('./routes/paymentRoutes');
+    const routeRoutes   = require('./routes/routeRoutes');
 
-console.log('Deploy AWS EC2. issus is over Now you login');
-                        
+    
 
     const app = express();
     app.use(express.json());
@@ -37,7 +35,7 @@ console.log('Deploy AWS EC2. issus is over Now you login');
 
 
 
-    app.use((req, res, next)=>{ 
+    app.use((req, res)=>{ 
         res.status(404).json({ status: 'Failed', message: 'Page not found, please check URL' });
     });
 
@@ -47,3 +45,8 @@ console.log('Deploy AWS EC2. issus is over Now you login');
     app.listen(PORT, () => {
         console.log(` Server running on port ${PORT}`);
     });
+
+
+
+    console.log('Deploy AWS EC2. issus is over Now can you login');
+                        

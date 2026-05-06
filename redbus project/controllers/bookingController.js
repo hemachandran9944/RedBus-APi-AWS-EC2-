@@ -5,7 +5,8 @@
     const Route = require('../models/Route');
     const Payment = require('../models/Payment');    
     const {BookingEmailMsg} = require ('../settings/OtpSender');
-    const { default: mongoose, mongo } = require('mongoose');
+    const mongoose = require('mongoose'); // ← இந்த line add பண்ணு
+    
 
 
 

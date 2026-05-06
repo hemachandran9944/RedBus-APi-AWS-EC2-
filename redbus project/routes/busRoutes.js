@@ -2,8 +2,7 @@
 
 const express = require('express');
 const Router  = express.Router();
-const jwt = require('jsonwebtoken');
-const { authoToken, authorizationTokenVerify } = require('../settings/autho');
+const { authorizationTokenVerify } = require('../settings/autho');
 const busController = require('../controllers/busController');
 
 

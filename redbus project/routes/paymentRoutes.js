@@ -2,7 +2,6 @@
 const express = require('express');
 const Router  = express.Router();
 const paymentController = require('../controllers/paymentController');
-const jwt = require('jsonwebtoken');
 const { authorizationTokenVerify } = require('../settings/autho');
 
 Router.get('/getAllpayment',  paymentController.GetAllPayment);
