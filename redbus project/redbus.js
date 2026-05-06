@@ -1,8 +1,9 @@
 
+    require('dotenv').config(); 
     const bcrypt = require('bcryptjs');
     const express = require('express');
     const Cluster_DataBase = require('./config/database'); 
-    require('dotenv').config();
+    
 
 
     // Controlleres
