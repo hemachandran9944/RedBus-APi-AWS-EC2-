@@ -17,13 +17,13 @@ const paymentSchema = new mongoose.Schema({
     },
     paymentMethod: {
         type: String,
-        enum: ["Cash", "Card", "UPI", "Net Banking"],
+        enum: ['Cash', 'Card', 'UPI', 'Net Banking'],
         required: true
     },
     paymentStatus: {
         type: String,
-        enum: ["Paid", "Unpaid", "Refunded", "Failed"],
-        default: "Unpaid"
+        enum: ['Paid', 'Unpaid', 'Refunded', 'Failed'],
+        default: 'Unpaid'
     },
     paidAt: {
         type: Date,

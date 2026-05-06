@@ -21,8 +21,8 @@ exports.RegisterUser = async (req, res ) =>{
         const userExit = await User.findOne({email});
         if (userExit) {
             return res.status(400).json({
-                status: "Resister Failed",
-                message: "Email is already registered !" 
+                status: 'Resister Failed',
+                message: 'Email is already registered !' 
             });
             
         }
@@ -36,8 +36,8 @@ exports.RegisterUser = async (req, res ) =>{
         await sigenUsers.save();
 
         res.status(200).json({
-            status: "Success",
-            message: "OTP sent to your email! Please check and verify.",
+            status: 'Success',
+            message: 'OTP sent to your email! Please check and verify.',
             Data: {
                 id: sigenUsers._id,
                 name: sigenUsers.name,
@@ -50,7 +50,7 @@ exports.RegisterUser = async (req, res ) =>{
     } catch (error) {
         
         res.status(500).json({
-            status: "Failed",
+            status: 'Failed',
             error: error.message 
         });
         
@@ -66,8 +66,8 @@ exports.RegisterUser = async (req, res ) =>{
         const VerifyRegOtp = await User.findOne({email});
         if (!VerifyRegOtp) {
             return res.status(404).json({
-                status: "Failed",
-                message: "User not found"
+                status: 'Failed',
+                message: 'User not found'
             });
         }
 
@@ -76,16 +76,16 @@ exports.RegisterUser = async (req, res ) =>{
             VerifyRegOtp.otp = null;
             await VerifyRegOtp.save();
             res.status(200).json({
-                status: "Success",
-                message: "Otp Verified successfulley! Now you can login."
+                status: 'Success',
+                message: 'Otp Verified successfulley! Now you can login.'
             });
             
             
         } else {
 
             res.status(400).json({
-                status: "Failed",
-                message: "Invalid  OTP! Please check you're email."
+                status: 'Failed',
+                message: 'Invalid  OTP! Please check you\'re email.'
             });
             
         }
@@ -100,7 +100,7 @@ exports.RegisterUser = async (req, res ) =>{
         
     }
     
- }
+ };
 
 
 
@@ -116,8 +116,8 @@ exports.LoginUesr = async (req, res) =>{
 
         if (!userLogin) {
             return res.status(401).json({
-                status: "Falied",
-                message: "User Not Found ! "
+                status: 'Falied',
+                message: 'User Not Found ! '
             });  
         }
 
@@ -125,8 +125,8 @@ exports.LoginUesr = async (req, res) =>{
 
         if (!isMatch) {
             return res.status(401).json({
-                status: "Falied",
-                message: "Invalied Password"
+                status: 'Falied',
+                message: 'Invalied Password'
             });
             
         }
@@ -134,8 +134,8 @@ exports.LoginUesr = async (req, res) =>{
         const authorization =  authoToken(userLogin._id);   
 
         res.status(200).json({
-            status: "Success",
-            message: "Login Successfulley",
+            status: 'Success',
+            message: 'Login Successfulley',
             data:{
                 id: userLogin._id,
                 email: userLogin.email,
@@ -146,7 +146,7 @@ exports.LoginUesr = async (req, res) =>{
     } catch (error) {
 
         res.status(404).json({
-            status: "Falied",
+            status: 'Falied',
             error: error.message 
         });
         
@@ -166,21 +166,21 @@ exports.SigleUser = [authorizationTokenVerify, async (req,res) => {
 
         if (!userProfile) {
             return res.status(404).json({
-                message: "User Not Found"
+                message: 'User Not Found'
             });
             
         }
 
         res.status(200).json({
-            status: "Success",
-            message: "Get user profile successfully!",
+            status: 'Success',
+            message: 'Get user profile successfully!',
             data:userProfile
 
         });
         
 
     } catch (error) {
-        console.log(error)
+        console.log(error);
         res.status(500).json({
             error: error.message 
         });
@@ -194,10 +194,10 @@ exports.SigleUser = [authorizationTokenVerify, async (req,res) => {
 
 exports.GetAllUsers = async (req, res) => {
     try {
-        const allUsersGet = await User.find().select('-otpExpiry -isVerified -otp -password')
+        const allUsersGet = await User.find().select('-otpExpiry -isVerified -otp -password');
         res.status(200).json({
-            status: "Success",
-            message: "Get All Uesrs Details Successfully",
+            status: 'Success',
+            message: 'Get All Uesrs Details Successfully',
             data: allUsersGet
         });
 
@@ -205,7 +205,7 @@ exports.GetAllUsers = async (req, res) => {
     } catch (error) {
 
         res.status(500).json({
-            status: "Failed",
+            status: 'Failed',
             error: error.message
         });
         
@@ -220,14 +220,14 @@ exports.GetAllUsers = async (req, res) => {
 
 exports.UserUpdate = [authorizationTokenVerify, async (req, res) => {
     try {
-        const User_Id = req.params.id
-        const{name, email, mobile}=req.body
+        const User_Id = req.params.id;
+        const{name, email, mobile}=req.body;
         const updatedUser = await User.findById(User_Id).select('-otpExpiry -isVerified -otp -password');
         
         if (!updatedUser) {
             return res.status(404).json({
-                status: "Failed",
-                message: "User Not Found"
+                status: 'Failed',
+                message: 'User Not Found'
             });  
         }
 
@@ -240,14 +240,14 @@ exports.UserUpdate = [authorizationTokenVerify, async (req, res) => {
         }
 
         if (mobile) {
-            updatedUser.mobile = mobile  
+            updatedUser.mobile = mobile;  
         }
 
         const UserDetailsUpdate = await updatedUser.save();
 
         res.status(200).json({
-            status: "Success",
-            message: "Update Successfulley",
+            status: 'Success',
+            message: 'Update Successfulley',
             data: UserDetailsUpdate
         });
 
@@ -264,19 +264,19 @@ exports.UserUpdate = [authorizationTokenVerify, async (req, res) => {
 
 exports.UserDelete = [authorizationTokenVerify, async (req, res) => {
     try {
-        const UserId = req.params.id
+        const UserId = req.params.id;
         const UserDelete = await User.findByIdAndDelete(UserId);
         
         if (!UserDelete) {
             return res.status(404).json({
-                status: "Failed",
-                message: "User not found"
+                status: 'Failed',
+                message: 'User not found'
             });   
         }
 
         res.status(200).json({
-            status: "Success",
-            message:  "User Profile delete successfulley!"
+            status: 'Success',
+            message:  'User Profile delete successfulley!'
         });
         
     } catch (error) {
@@ -298,8 +298,8 @@ exports.AllUserDataDelete = async (req, res) => {
     try {
         const deleteUsers = await User.deleteMany({});
         res.status(200).json({
-            status: "Success",
-            message: "All users data (deleted Successfulley)!", 
+            status: 'Success',
+            message: 'All users data (deleted Successfulley)!', 
             data: deleteUsers
         });
     } catch (error) {
@@ -318,8 +318,8 @@ exports.LogOut  = async (req, res) => {
     try {
 
         res.status(200).json({
-            status: "Success",
-            message: "User session ended successfully"
+            status: 'Success',
+            message: 'User session ended successfully'
         });
         
     } catch (error) {
@@ -328,7 +328,7 @@ exports.LogOut  = async (req, res) => {
         
     }
     
-}            
+};            
 
 
 
@@ -341,8 +341,8 @@ exports.resetpassworsOtp =  async(req, res)=>{
         const {email} = req.body;
         if (!email ) {
             return res.status(404).json({
-                status: "Failed",
-                message: "Email is required"
+                status: 'Failed',
+                message: 'Email is required'
             });
 
         } 
@@ -351,8 +351,8 @@ exports.resetpassworsOtp =  async(req, res)=>{
         
         if (!user) {
             return res.status(400).json({
-                status: "Failed",
-                message: "User Not Found"
+                status: 'Failed',
+                message: 'User Not Found'
             });
             
         }
@@ -373,7 +373,7 @@ exports.resetpassworsOtp =  async(req, res)=>{
 
         return res.status(200).json({
             status: 'Success',
-            message: "OTP send  gmail id ",
+            message: 'OTP send  gmail id ',
             email: email 
         });
 
@@ -382,7 +382,7 @@ exports.resetpassworsOtp =  async(req, res)=>{
     } catch (error) {
 
         res.status(500).json({
-            status: "Failed",
+            status: 'Failed',
             error: error.message
         });
         
@@ -393,19 +393,19 @@ exports.resetpassworsOtp =  async(req, res)=>{
 
 exports.VeriyOtp = async (req, res) => {
     try {
-        const{email, newPassword, confirmPassword, otp}=req.body
+        const{email, newPassword, confirmPassword, otp}=req.body;
         const user = await User.findOne({email});
         if (newPassword !== confirmPassword) {
             return res.status(400).json({
-                status: "Failed",
-                 message: "OTP has expired. Please request a new one."
+                status: 'Failed',
+                 message: 'OTP has expired. Please request a new one.'
             });  
         }
 
         if (!user) {
             return res.status(404).json({
                 status: 'Failed',
-                message: "User not found!" 
+                message: 'User not found!' 
             });   
         }
 
@@ -414,7 +414,7 @@ exports.VeriyOtp = async (req, res) => {
 
             if (new Date()> user.otpExpiry) {
                 return res.status(400).json({
-                    message: "OTP has expired. Please request a new one."
+                    message: 'OTP has expired. Please request a new one.'
                 });
                 
             }
@@ -426,15 +426,15 @@ exports.VeriyOtp = async (req, res) => {
 
             await user.save();
             res.status(200).json({
-                status: "Success",
-                message: "Password has been reset successfully!"
+                status: 'Success',
+                message: 'Password has been reset successfully!'
             });
 
         } else {
 
             res.status(404).json({
-                status: "Failed",
-                message: "Invalid OTP. Please check your email.",
+                status: 'Failed',
+                message: 'Invalid OTP. Please check your email.',
                 error: error.message  
             });
             
@@ -448,4 +448,4 @@ exports.VeriyOtp = async (req, res) => {
         
     }
     
-}
+};

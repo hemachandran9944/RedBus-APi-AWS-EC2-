@@ -10,7 +10,7 @@ const authoToken = (userId) => {
     try {
 
         const secret = process.env.JWT_SECRET_KEY;
-        console.log("Current Secret Key:", secret);
+        console.log('Current Secret Key:', secret);
         if (!secret) {
             throw new Error('JWT_SECRET_KEY is not defined in .env');
         }
@@ -24,7 +24,7 @@ const authoToken = (userId) => {
 
         
     } catch (error) {
-        console.log ("Json Token Error", error);
+        console.log ('Json Token Error', error);
         throw error;
         
     }
@@ -41,15 +41,15 @@ const authorizationTokenVerify= (req, res, next)=>{
     try {
         const authorization_token = req.headers.authorization;
 
-        if (!authorization_token || !authorization_token.startsWith("Bearer ")) {
+        if (!authorization_token || !authorization_token.startsWith('Bearer ')) {
             return res.status(401).json({
-                status: "Failed",
-                message: "Token missing or invalid"
+                status: 'Failed',
+                message: 'Token missing or invalid'
             });
             
         }
 
-        const token  = authorization_token.split(" ")[1];
+        const token  = authorization_token.split(' ')[1];
         const decode = jwt.verify(token, process.env.JWT_SECRET_KEY);
         req.user     = decode;
 
@@ -59,8 +59,8 @@ const authorizationTokenVerify= (req, res, next)=>{
     } catch (error) {
 
         return res.status(401).json({
-            status: "Failed",
-            message: "Invalid or expired token",
+            status: 'Failed',
+            message: 'Invalid or expired token',
             error: error.message 
         });
   

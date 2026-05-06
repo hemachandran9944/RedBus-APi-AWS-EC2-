@@ -7,14 +7,14 @@ exports.GetAllRoute = async (req, res) => {
     try {
         const getAllMethodRoute = await Route.find();
         res.status(200).json({
-            status: "Success",
-            message: "Routes  get successfully",
+            status: 'Success',
+            message: 'Routes  get successfully',
             total: getAllMethodRoute.length,
             Data: getAllMethodRoute,
 
         });
     } catch (error) {
-        res.status(500).json({status: "Failed",error: error.message})
+        res.status(500).json({status: 'Failed',error: error.message});
         
     }
 
@@ -30,11 +30,11 @@ exports.GetSigelMethodRouters = async (req, res) => {
     try {
         const getSiglerouter = await Route.findById(req.params.id);
         if (!getSiglerouter) {
-            return res.status(404).json({status: "Failed", message: "Route not found"});
+            return res.status(404).json({status: 'Failed', message: 'Route not found'});
         };
-        res.status(200).json({status: "Success", message: "Route get successfully", data: getSiglerouter});
+        res.status(200).json({status: 'Success', message: 'Route get successfully', data: getSiglerouter});
     } catch (error) {
-        res.status(500).json({status: "Failed", error: error.message});
+        res.status(500).json({status: 'Failed', error: error.message});
         
     }
 
@@ -49,7 +49,7 @@ exports.UpdateRouts  = async (req, res) => {
         const {journeyDeparturePoint, journeyArrivalPoint} =  req.body;
         const RouteID = await Route.findById(req.params.id);
         if (!RouteID) {
-            return res.status(404).json({status: "Failed", message: "Route not found"});
+            return res.status(404).json({status: 'Failed', message: 'Route not found'});
         }
         
         if (journeyDeparturePoint) {
@@ -61,10 +61,10 @@ exports.UpdateRouts  = async (req, res) => {
         }
 
         const UpdateRoute = await RouteID.save();
-        res.status(200).json({status: "Success", message: "Update Successfulley!",data: UpdateRoute});
+        res.status(200).json({status: 'Success', message: 'Update Successfulley!',data: UpdateRoute});
     } catch (error) {
 
-        res.status(500).json({status: "Failed", error: error.message});
+        res.status(500).json({status: 'Failed', error: error.message});
         
     }
 
@@ -80,11 +80,11 @@ exports.DeleteSigleRoute   = async (req, res) => {
     try {
         const DeleteRoutes = await Route.findByIdAndDelete(req.params.id);
         if (!DeleteRoutes) {
-            return res.status(404).json({status: "Failed", message: "Route not found"});
+            return res.status(404).json({status: 'Failed', message: 'Route not found'});
         }
-        res.status(200).json({status: 'Success', message: "Sigle route delete Successfulley", Data: DeleteRoutes});
+        res.status(200).json({status: 'Success', message: 'Sigle route delete Successfulley', Data: DeleteRoutes});
     } catch (error) {
-        res.status(500).json({status: "Failed", error: error.message });
+        res.status(500).json({status: 'Failed', error: error.message });
         
     }
     
@@ -96,14 +96,14 @@ exports.DeleteAllroutes  = async (req, res) => {
     try {
         const DeleteAllRoutes = await Route.deleteMany({});
         res.status(200).json({
-            status: "Success",
-            message: "All route delete successfulley!",
+            status: 'Success',
+            message: 'All route delete successfulley!',
             Count: DeleteAllRoutes.deletedCount,
             Data: DeleteAllRoutes
         });
 
     } catch (error) {
-        res.status(500).json({status: "Failed", error: error.message});
+        res.status(500).json({status: 'Failed', error: error.message});
         
     }  
 };

@@ -10,8 +10,8 @@
             
             const newBus  = await Bus.create(req.body);
             res.status(201).json({
-                status: "Success",
-                message: "Bus created successfully.",
+                status: 'Success',
+                message: 'Bus created successfully.',
                 data: newBus,
                 
             });
@@ -19,11 +19,11 @@
 
             if (error.code === 11000) {
                 return res.status(400).json({
-                    message: "Duplicate entry detected. The provided information is already registered."
+                    message: 'Duplicate entry detected. The provided information is already registered.'
                 });
                 
             }
-            res,status(500),json({error: error.message});
+            res,status(500),json({error: error.messa.ge});
             
         }
         
@@ -35,8 +35,8 @@
 exports.GetAllBus   =  async function (req, res) {
     try {
         const buses  = await Bus.find();
-        res.status(200).json({
-            status: "Success",
+        resstatus(200).json({
+            status: 'Success',
             results: buses.length,
             data: buses
         });
@@ -56,16 +56,16 @@ exports.SigleBus = async (req, res) => {
     try {
         const sigleBus = await Bus.findById(req.params.id);
         if (!sigleBus) {
-            return res.status(400).json({ message: "User Not Found"}); 
+            return res.status(400).json({ message: 'User Not Found'}); 
         }
 
-        res.status(200).json({status: "Success",data: sigleBus });
+        res.status(200).json({status: 'Success',data: sigleBus });
     } catch (error) {
         res.status(500).json({error: error.message});
         
     }
     
-}        
+};        
     
 
 
@@ -78,7 +78,7 @@ exports.busUpdate = async (req, res) => {
         const {busName, busType, totalSeats, busNumber, amenities} = req.body;
         const busUpdate = await Bus.findById(req.params.id);
         if (!busUpdate) {
-            return res.status(400).json({message: "Bus not found"});
+            return res.status(400).json({message: 'Bus not found'});
         }
 
         if (busName) {
@@ -99,11 +99,11 @@ exports.busUpdate = async (req, res) => {
 
         const UpdatenewBus = await busUpdate.save();
 
-        res.status(200).json({status: "Success", data: UpdatenewBus});
+        res.status(200).json({status: 'Success', data: UpdatenewBus});
 
     } catch (error) {
         if (error.code === 11000) {
-            return res.status(409).json({ message: "This bus number is already in use" });
+            return res.status(409).json({ message: 'This bus number is already in use' });
         }
         res.status(500).json({error: error.message});
         
@@ -118,13 +118,13 @@ exports.DeleteSigleBus = async (req, res) => {
     try {
         const deleteBus  = await Bus.findByIdAndDelete(req.params.id);
         if (!deleteBus) {
-            return res.status(404).json({message: "Bus not found"});    
+            return res.status(404).json({message: 'Bus not found'});    
         }
 
-        res.status(200).json({status: "Success", message: "Bus deleted successfully!"});
+        res.status(200).json({status: 'Success', message: 'Bus deleted successfully!'});
 
     } catch (error) {
-        console.log(error.message)
+        console.log(error.message);
         res.status(500).json({error: error.message});
         
     }
@@ -138,7 +138,7 @@ exports.DeleteSigleBus = async (req, res) => {
 exports.deleteAllBus = async (req, res) => {
     try {
         const deleteallBus  = await Bus.deleteMany({}); 
-        res.status(404).json({status: "Success", message: "Delete all bus successfulley!", Count: deleteallBus.deletedCount});
+        res.status(404).json({status: 'Success', message: 'Delete all bus successfulley!', Count: deleteallBus.deletedCount});
 
     } catch (error) {
         res.status(500).json({error: error.message});

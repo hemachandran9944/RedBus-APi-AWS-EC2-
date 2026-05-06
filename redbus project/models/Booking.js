@@ -10,7 +10,7 @@ const bookingSchema = new mongoose.Schema({
     bookingRefCode:({
         type: String,
         unique: true,
-        required: [true, "Booking reference code is required"],
+        required: [true, 'Booking reference code is required'],
         trim:     true
     }),
     bookingCreatedDate:({
@@ -19,17 +19,17 @@ const bookingSchema = new mongoose.Schema({
     }),
     passengerFullName:({
         type: String,
-        required: [true, "Passenger name is required"],
+        required: [true, 'Passenger name is required'],
         trim:     true
     }),
     passengerAge: ({
         type: Number,
-        required: [true, "Passenger age is required"]
+        required: [true, 'Passenger age is required']
     }),
     passengerGender: ({
         type: String,
         enum: {
-            values:  ["Male", "Female", "Other"],
+            values:  ['Male', 'Female', 'Other'],
             message: '{VALUE} is not a valid gender'
         },
     }),
@@ -47,7 +47,7 @@ const bookingSchema = new mongoose.Schema({
     allocatedSeatNumber: ({
        type: String,
        enum:{
-        values:  ["ME2", "L4", "VE5"],
+        values:  ['ME2', 'L4', 'VE5'],
         message: '{VALUE} is not a valid seat number'
        },
 
@@ -56,7 +56,7 @@ const bookingSchema = new mongoose.Schema({
     seatClassType:({
         type: String,
         enum: {
-            values:  ["Economy", "Business", "First Class"],
+            values:  ['Economy', 'Business', 'First Class'],
             message: '{VALUE} is not a valid seat class'
         },
 
@@ -64,10 +64,10 @@ const bookingSchema = new mongoose.Schema({
     ticketCurrentStatus:({
         type: String,
             enum: {
-            values:  ["Confirmed", "Cancelled", "Pending", "Boarded"],
+            values:  ['Confirmed', 'Cancelled', 'Pending', 'Boarded'],
             message: '{VALUE} is not a valid ticket status'
         },
-        default: "Pending"
+        default: 'Pending'
     }),
     ticketIsssuedDate: ({
         type: Date,

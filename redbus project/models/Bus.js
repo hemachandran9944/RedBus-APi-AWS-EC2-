@@ -11,17 +11,17 @@ const BusSchema  = mongoose.Schema({
     }),
     busType: ({
         type: String,
-        require: [true, "Bus name is required"],
+        require: [true, 'Bus name is required'],
         trim: true
     }),
     totalSeats: ({
         type: String,
-        require: [true, "Total seats is required"],
+        require: [true, 'Total seats is required'],
         trim: true
     }),
     busNumber: ({
         type: String,
-        require: [true, "Bus number is required"],
+        require: [true, 'Bus number is required'],
         unique: true,
         uppercase: true,
         trim: true
