@@ -18,12 +18,12 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          cd "redbus project"
+          cd redbus-project
           npm install
 
       - name: Check Syntax Error and find bugs
         run: |
-          cd "redbus project"
+          cd redbus-project
           node --check redbus.js
           npx eslint .
           npm test 
