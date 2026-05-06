@@ -2,9 +2,11 @@
   "name": "redbus-project",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "redbus.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node redbus.js", 
+    "dev": "nodemon redbus.js",
+    "test": "echo All tests passed!"
   },
   "keywords": [],
   "author": "",

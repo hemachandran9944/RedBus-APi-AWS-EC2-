@@ -21,7 +21,7 @@ jobs:
           cd "redbus project"
           npm install
 
-      - name: Check Syntax Error
+      - name: Check Syntax Error and find bugs
         run: |
           cd "redbus project"
           node --check redbus.js
@@ -37,6 +37,6 @@ jobs:
           script: |
             cd /home/ubuntu/RedBus-APi-AWS-EC2-
             git pull origin main
-            cd "redbus project"
+            cd redbus-project
             npm install
             pm2 restart redbus-api || pm2 start redbus.js --name "redbus-api"

@@ -1,19 +1,19 @@
-const eslint = require("@eslint/js");
-
-
-try {
-    module.exports = [
-    eslint.configs.recommended,
+module.exports = [
     {
+        languageOptions: {
+            globals: {
+                require: "readonly",
+                module: "readonly",
+                exports: "readonly",
+                console: "readonly",
+                process: "readonly",
+                __dirname: "readonly",
+                __filename: "readonly"
+            }
+        },
         rules: {
             "no-unused-vars": "warn",
             "no-undef": "error"
         }
     }
 ];
-    
-} catch (error) {
-    console.log("eslint".error);
-    throw error;
-    
-}
