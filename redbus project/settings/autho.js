@@ -7,18 +7,30 @@ const jwt = require('jsonwebtoken');
 //  authoToken Creact
 
 const authoToken = (userId) => {
-    const secret = process.env.JWT_SECRET_KEY;
-    console.log("Current Secret Key:", secret);
-    if (!secret) {
-        throw new Error('JWT_SECRET_KEY is not defined in .env');
+    try {
+
+        const secret = process.env.JWT_SECRET_KEY;
+        console.log("Current Secret Key:", secret);
+        if (!secret) {
+            throw new Error('JWT_SECRET_KEY is not defined in .env');
+        }
+
+
+        return jwt.sign(
+            { id: userId },
+            secret,
+            { expiresIn: '1d' }
+        );
+
+        
+    } catch (error) {
+        console.log ("Json Token Error", error);
+        throw error;
+        
     }
 
-    return jwt.sign(
-        { id: userId },
-        secret,
-        { expiresIn: '1d' }
-    );
-};
+};    
+
 
 
         // Autho Token Verifaid
