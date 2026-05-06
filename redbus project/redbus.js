@@ -14,7 +14,7 @@
     const PaymetRouter  = require('./routes/paymentRoutes');
     const routeRoutes   = require('./routes/routeRoutes');
 
-    console.log('Deploy AWS EC2. Probles is over Now you login');
+    console.log('Deploy AWS EC2. issus is over Now you login');
                         
 
     const app = express();
