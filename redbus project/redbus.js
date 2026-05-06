@@ -2,7 +2,6 @@
     require('dotenv').config(); 
     const bcrypt = require('bcryptjs');
     const express = require('express');
-    const js = require("@eslint/js");
     const Cluster_DataBase = require('./config/database'); 
     
 

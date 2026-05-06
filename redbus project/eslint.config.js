@@ -1,6 +1,8 @@
 const eslint = require("@eslint/js");
 
-module.exports = [
+
+try {
+    module.exports = [
     eslint.configs.recommended,
     {
         rules: {
@@ -9,3 +11,9 @@ module.exports = [
         }
     }
 ];
+    
+} catch (error) {
+    console.log("eslint".error);
+    throw error;
+    
+}
