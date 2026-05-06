@@ -1,7 +1,7 @@
 
     require('dotenv').config(); 
     const express = require('express');
-     
+    const Cluster_DataBase = require('./config/database');     
 
 
 
@@ -17,6 +17,8 @@
 
     const app = express();
     app.use(express.json());
+
+    Cluster_DataBase();
 
 
     app.use((req, res, next) => {
@@ -44,10 +46,10 @@
     const PORT = process.env.PORT || 3000;
     app.listen(PORT, () => {
         console.log(` Server running on port ${PORT}`);
+        console.log('Testing CI/CD - Version 2.0 ');
     });
 
 
 
-    console.log('Deploy AWS EC2. issus is over Now can you login');
-    console.log('Testing CI/CD - Version 2.0 ');
+    
                         
