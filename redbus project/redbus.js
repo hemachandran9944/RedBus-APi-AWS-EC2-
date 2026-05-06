@@ -36,7 +36,7 @@
 
 
     app.use((req, res, next)=>{ 
-        res.status(404).json(" Page not found plese check URL");
+        res.status(404).json({ status: "Failed", message: "Page not found, please check URL" });
     });
 
 
