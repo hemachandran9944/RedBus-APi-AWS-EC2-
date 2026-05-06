@@ -8,7 +8,7 @@ const jwt = require('jsonwebtoken');
 
 const authoToken = (userId) => {
     const secret = process.env.JWT_SECRET_KEY;
-
+    console.log("Current Secret Key:", secret);
     if (!secret) {
         throw new Error('JWT_SECRET_KEY is not defined in .env');
     }

@@ -8,7 +8,7 @@ const { authorizationTokenVerify } = require('../settings/autho');
 
 router.post('/register', userController.RegisterUser);
 router.post('/register-otp-verify', userController.RegisterOtpVerify);
-router.post('/login',authorizationTokenVerify ,userController.LoginUesr);
+router.post('/login',userController.LoginUesr);
 
 
 router.get('/UserProfile/:id',authorizationTokenVerify ,userController.SigleUser);

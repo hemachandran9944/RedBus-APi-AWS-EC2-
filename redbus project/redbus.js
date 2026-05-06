@@ -9,10 +9,10 @@
     // Controlleres
 
     const userRoutes    = require('./routes/userRoutes');
-    const busRoutes     = require('./Routes/busRoutes');
-    const bookingRoutes = require('./Routes/bookingRoutes');
-    const PaymetRouter  = require('./Routes/paymentRoutes');
-    const routeRoutes   = require('./Routes/routeRoutes');
+    const busRoutes     = require('./routes/busRoutes');
+    const bookingRoutes = require('./routes/bookingRoutes');
+    const PaymetRouter  = require('./routes/paymentRoutes');
+    const routeRoutes   = require('./routes/routeRoutes');
 
 
     const app = express();
