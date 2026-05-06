@@ -49,4 +49,5 @@
 
 
     console.log('Deploy AWS EC2. issus is over Now can you login');
+    console.log('Testing CI/CD - Version 2.0 ');
                         
