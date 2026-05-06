@@ -25,6 +25,8 @@ jobs:
         run: |
           cd "redbus project"
           node --check redbus.js
+          npx eslint .
+          npm test 
 
       - name: Deploy to EC2
         uses: appleboy/ssh-action@master
